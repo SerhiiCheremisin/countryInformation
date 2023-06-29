@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'country';
+  @Output() city: string = '';
+  @Output() info: any[] = [];
+
+spreadCityData(event: any) {
+  this.city = event.name;
+  this.info = event.info;
+}
+
+
 }

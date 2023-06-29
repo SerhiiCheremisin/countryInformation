@@ -1,0 +1,15 @@
+main {
+    display: flex;
+    justify-content: center;
+    height: 89vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../../assets/cityBG.jpg);
+    background-position: center;
+
+    h3 {
+        font-size: 85px;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: rgb(99, 40, 40);
+    }
+}

@@ -1,0 +1,5 @@
+<main *ngIf="cityArray.length !== 0;else blankCity">
+    <h3>{{cityArray.flag}}{{cityName}}</h3>
+     <p></p>
+</main>
+<ng-template #blankCity><app-blank-city></app-blank-city></ng-template>

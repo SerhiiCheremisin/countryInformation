@@ -1,8 +1,20 @@
-<header style="header">
- <p>Chose your country: {{chosenCountry}}</p>
- <select (change)="setCountry($event)" name="countrySelect" id="countrySelect">
-    <option value="one">one</option>
-    <option value="two">two</option>
-    <option value="three">three</option>
- </select>
-</header>
+<header class="header">
+
+ <div class="search-block">
+   <p>Search country manualy:</p> 
+   <input (input)="searchCountry($event)" value={{searchParams}} type="search" placeholder="Start type for search">
+   <div *ngIf="searchParams.length !== 0" class="search__pop-up">
+   <ul>
+    <li (click)="cityClick(city.name.common)" *ngFor="let city of filteredCities"> {{city.name.common}} </li>
+   </ul>
+   </div>
+ </div>
+ <div class="search-block">
+   <p>Chose your country from the list:</p>
+   <select (change)="setCountry($event)" name="countrySelect" id="countrySelect">
+      <option value="Chose below" [defaultSelected]="true">Chose below</option>
+      <option *ngFor="let item of defaultCountries" value={{item}}>{{item}}</option>
+   </select>
+ </div>
+
+ </header>
