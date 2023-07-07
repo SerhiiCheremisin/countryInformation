@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CityInfoComponent } from './city-info/city-info.component';
 import { BlankCityComponent } from './city-info/blank-city/blank-city.component';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { BlankCityComponent } from './city-info/blank-city/blank-city.component'
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

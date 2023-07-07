@@ -13,7 +13,7 @@
    <p>Chose your country from the list:</p>
    <select (change)="setCountry($event)" name="countrySelect" id="countrySelect">
       <option value="Chose below" [defaultSelected]="true">Chose below</option>
-      <option *ngFor="let item of defaultCountries" value={{item}}>{{item}}</option>
+      <option *ngFor="let item of appService.defaultCountries" value={{item}}>{{item}}</option>
    </select>
  </div>
 

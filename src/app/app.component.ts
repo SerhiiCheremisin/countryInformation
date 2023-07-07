@@ -1,18 +1,12 @@
 import { Component, Input, Output } from '@angular/core';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [AppService]
 })
 export class AppComponent {
-  @Output() city: string = '';
-  @Output() info: any[] = [];
-
-spreadCityData(event: any) {
-  this.city = event.name;
-  this.info = event.info;
-}
-
 
 }

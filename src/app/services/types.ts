@@ -33,10 +33,16 @@ export interface ISingleCounrtyInfo {
         population: number,
         gini: {},
         fifa: string,
-        car: {},
+        car: 
+         {sings: string [],
+        side: string},
         timezones: [],
         continents: [],
-        flags: {},
+        flags: {
+                png: string,
+                svg: string,
+                alt: string,
+        },
         coatOfArms: {},
         startOfWeek: string,
         capitalInfo: {
@@ -44,3 +50,5 @@ export interface ISingleCounrtyInfo {
         },
         postalCode: {}
 }
+
+export type tooltipType = "currency" | "country";

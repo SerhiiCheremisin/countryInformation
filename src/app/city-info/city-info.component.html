@@ -1,5 +1,69 @@
-<main *ngIf="cityArray.length !== 0;else blankCity">
-    <h3>{{cityArray.flag}}{{cityName}}</h3>
-     <p></p>
+<main *ngIf="appService.isCountryChosen;else blankCity">
+    <h3><img src={{appService.singleCountryData[0].flags.png}} alt=`${appService.singleCountryData[0].flags.alt}>{{appService.chosenCountry}}</h3>
+    <div class="infirmation-wrapper">
+       <div class="infirmation-wrapper--box">
+        <h4>General information:</h4>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Area: {{appService.singleCountryData[0].area}} km2</span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Population: {{appService.singleCountryData[0].population}} people</span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Capital: {{appService.singleCountryData[0].capital[0].toUpperCase()}}</span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Cituated on: 
+                    <span *ngFor="let continents of appService.singleCountryData[0].continents"> {{continents}}</span>
+            </span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Subregion is: {{appService.singleCountryData[0].subregion}}
+            </span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Official language -(s): 
+                    <span *ngFor="let item of appService.singleCountryData[0].languages | keyvalue"> {{item.value}}</span>
+            </span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Official currency: 
+                    <span (mouseenter) = "mouseInfoEnter('currency', item.key)"  (mouseleave)="mouseInfoLeave()" 
+                    class="add-info-link" *ngFor="let item of appService.singleCountryData[0].currencies | keyvalue"> {{item.key}}
+                    </span>
+            </span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <div class="toolpit" *ngIf="isAdditionalInfoNeeded === true" > {{toolpitInformation}} </div>
+            <span>Border with: 
+                    <span *ngIf="appService.singleCountryData[0].borders" >
+                        <span (mouseenter) = "mouseInfoEnter('country', border)"  (mouseleave)="mouseInfoLeave()" 
+                        class="add-info-link" (click)="choseCountryFromBorder(border)" *ngFor="let border of appService.singleCountryData[0]?.borders">{{border}}</span>
+                    </span>
+              </span>
+        </div>
+     </div>
+     <div class="infirmation-wrapper--box">
+        <h4>Additional information:</h4>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Status {{appService.singleCountryData[0].status}}</span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Is independent: {{appService.singleCountryData[0].independent}}</span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Is IN member: {{appService.singleCountryData[0].unMember}}</span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>People drive here on the <b>{{appService.singleCountryData[0].car.side}}</b> side of the road</span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Week starts on <b>{{appService.singleCountryData[0].startOfWeek}}</b></span>
+        </div>
+        <div class="infirmation-wrapper--box__infochunk">
+            <span>Timezones: <span class="timezone" *ngFor="let timezone of appService.singleCountryData[0].timezones">{{timezone}}</span> </span>
+        </div>
+     </div>
+    </div>
 </main>
 <ng-template #blankCity><app-blank-city></app-blank-city></ng-template>
