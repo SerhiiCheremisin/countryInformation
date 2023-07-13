@@ -1,5 +1,10 @@
 <header class="header">
 
+  <div class="search-block">
+  <a routerLinkActive="active-link" routerLink="/" [routerLinkActiveOptions]="{exact:true}">Search by name</a>
+  <a routerLinkActive="active-link" routerLink="/ratings" [routerLinkActiveOptions]="{exact:true}" >Ratings</a>
+  <a routerLinkActive="active-link" routerLink="/flags" [routerLinkActiveOptions]="{exact:true}">Flags knowledge game</a>
+  </div>
  <div class="search-block">
    <p>Search country manualy:</p> 
    <input (input)="searchCountry($event)" value={{searchParams}} type="search" placeholder="Start type for search">

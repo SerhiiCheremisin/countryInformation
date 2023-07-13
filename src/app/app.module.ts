@@ -7,17 +7,23 @@ import { HeaderComponent } from './header/header.component';
 import { CityInfoComponent } from './city-info/city-info.component';
 import { BlankCityComponent } from './city-info/blank-city/blank-city.component';
 import { AppService } from './app.service';
+import { RouterModule, Routes } from '@angular/router';
+import { RatingsComponent } from './ratings/ratings.component';
+import { FlagsComponent } from './flags/flags.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CityInfoComponent,
-    BlankCityComponent
+    BlankCityComponent,
+    RatingsComponent,
+    FlagsComponent   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

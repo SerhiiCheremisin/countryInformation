@@ -27,7 +27,7 @@ export class CityInfoComponent {
         this.appService.fetchAllData(`currency/${info}`)
         .then( (data:ISingleCounrtyInfo[]) => data[0].currencies)
         .then( currency =>  {
-          this.toolpitInformation = "The currency of this country is: ";
+          this.toolpitInformation = "The currency is: ";
           for ( const [key, value] of Object.entries(currency) ) {
             this.keys.push(key);
             this.values.push(value);
@@ -35,14 +35,14 @@ export class CityInfoComponent {
         }) 
         .then( () => {
           let symbolRenderLogic = this.values[0].symbol === undefined ? "" : this.values[0].symbol
-          this.toolpitInformation = `The currency of this country is: ${symbolRenderLogic} ${this.values[0].name}`;
+          this.toolpitInformation = `The currency is: ${symbolRenderLogic} ${this.values[0].name}`;
         })
         break;
       }
       case "country" : {
         this.appService.fetchByAlpha(info)
         .then(( data:ISingleCounrtyInfo[]) => { 
-          this.toolpitInformation = `This is: ${data[0].name.common} `;
+          this.toolpitInformation = `${data[0].name.common} `;
         })
         break;
       }

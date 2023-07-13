@@ -1,7 +1,7 @@
 header {
  width: 100%;
  display: flex;
- justify-content: space-between;
+ justify-content: space-evenly;
  border-bottom: 1px solid black;
  padding: 10px 0;
  background: rgb(36,0,0);
@@ -16,7 +16,23 @@ header {
    font-size: 20px;
    color: #ffff;
    margin-right: 15px;
- }
+  }
+ a{
+  @extend p;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .5s ease;
+  transform: scale(1);
+  &:hover{
+  transform: scale(1.06);
+  color:red;
+  }
+}
+ .link-active{
+  @extend a;
+  color: red;
+  text-decoration: underline;
+ } 
  select {
  width: 250px;
  background-color: aqua;
@@ -35,10 +51,10 @@ header {
 
   .search__pop-up {
       width: 500px;
-      height: 300px;
+      height: 280px;
       background-color: #fff;
       position: absolute;
-      left: 14%;
+      left: 37%;
       top: 75%;
       border-radius: 15px;
       overflow: scroll;

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { ISingleCounrtyInfo } from '../services/types';
 import { AppService } from '../app.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-   constructor( public appService: AppService) {
+   constructor( public appService: AppService, public router: Router)  {
 
   }
 
@@ -24,11 +25,16 @@ export class HeaderComponent {
     this.appService.isCountryChosen = true;
   }
 
+  navigateToTheSearchResults ():void {
+    this.router.navigate(['/']); 
+  }
+
   setCountry (event: any) {
    const name:string = event.target.value;
    this.appService.fetchSingleCountry(name)
        .then( (data:ISingleCounrtyInfo[]) => {
         this.sendData(data);
+        this.navigateToTheSearchResults();
    });
    
   }
@@ -40,6 +46,7 @@ export class HeaderComponent {
   cityClick(city:string) {
     this.appService.fetchSingleCountry(city).then( (data:ISingleCounrtyInfo[]) => {
       this.sendData(data);
+      this.navigateToTheSearchResults();
      });
     this.searchParams = ''
   }

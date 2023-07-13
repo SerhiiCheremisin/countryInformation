@@ -52,3 +52,4 @@ export interface ISingleCounrtyInfo {
 }
 
 export type tooltipType = "currency" | "country";
+export type sortType = "population" | "area"

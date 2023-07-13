@@ -1,6 +1,6 @@
 <main *ngIf="appService.isCountryChosen;else blankCity">
     <h3><img src={{appService.singleCountryData[0].flags.png}} alt=`${appService.singleCountryData[0].flags.alt}>{{appService.chosenCountry}}</h3>
-    <div class="infirmation-wrapper">
+    <div [style.background-image]="'url('+appService.singleCountryData[0].flags.png+')'" class="infirmation-wrapper">
        <div class="infirmation-wrapper--box">
         <h4>General information:</h4>
         <div class="infirmation-wrapper--box__infochunk">
@@ -36,10 +36,14 @@
         <div class="infirmation-wrapper--box__infochunk">
             <div class="toolpit" *ngIf="isAdditionalInfoNeeded === true" > {{toolpitInformation}} </div>
             <span>Border with: 
-                    <span *ngIf="appService.singleCountryData[0].borders" >
+                    <span *ngIf="appService.singleCountryData[0].borders; else noBorders" >
                         <span (mouseenter) = "mouseInfoEnter('country', border)"  (mouseleave)="mouseInfoLeave()" 
                         class="add-info-link" (click)="choseCountryFromBorder(border)" *ngFor="let border of appService.singleCountryData[0]?.borders">{{border}}</span>
                     </span>
+                    <ng-template #noBorders>
+                        <span>no one</span>
+                    </ng-template>
+                    
               </span>
         </div>
      </div>
@@ -52,7 +56,7 @@
             <span>Is independent: {{appService.singleCountryData[0].independent}}</span>
         </div>
         <div class="infirmation-wrapper--box__infochunk">
-            <span>Is IN member: {{appService.singleCountryData[0].unMember}}</span>
+            <span>Is UN member: {{appService.singleCountryData[0].unMember}}</span>
         </div>
         <div class="infirmation-wrapper--box__infochunk">
             <span>People drive here on the <b>{{appService.singleCountryData[0].car.side}}</b> side of the road</span>
