@@ -1,3 +1,12 @@
 <div class="flags-wrapper">
-    
+    <h2>Flag below belongs to</h2>
+    <img src={{shuffeledCountries[counter].flags.png}} alt="random pthoto">
+    <div class="answers-wrapper">
+        <button (click)="onAnswerClick($event)" *ngFor="let flag of shuffeledAnswers" value={{flag.name.common}} class="answers-wrapper__answer-box"> {{flag.name.common}} </button>
+    </div>
+    <div class="score-wrapper">
+        <h3>Number of correct answers: {{correctAnswers}}</h3>
+        <h3>Number of incorrect answers: {{incorrectAnswers}}</h3>
+    </div>
+    <span>There will be 50 flags you should guess</span>
 </div>
